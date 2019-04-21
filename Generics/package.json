@@ -11,7 +11,7 @@
     "typescript",
     "course"
   ],
-  "author": "Maximilian Schwarzmueller",
+  "author": "Song Cho",
   "license": "MIT",
   "devDependencies": {
     "lite-server": "^2.2.2"
