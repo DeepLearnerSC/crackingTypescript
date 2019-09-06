@@ -1,6 +1,8 @@
 import React from "react";
 import { Store } from "./store";
-import {IAction, IEpisode} from './interfaces'
+import { IAction, IEpisode } from "./interfaces";
+
+const EpisodeList = React.lazy<any>(()=> import ('./EpisodeList' ));
 
 
 export default function App(): JSX.Element {
@@ -20,43 +22,45 @@ export default function App(): JSX.Element {
       payload: dataJSON._embedded.episodes
     });
   };
-  const toggleFavAction = (episode: IEpisode): IAction =>  dispatch({
-    type: "ADD_FAV",
-    payload: episode
-  });
+  const toggleFavAction = (episode: IEpisode): IAction => {
+    const episodeInFav = state.favorites.includes(episode);
+    let dispatchObj = {
+      type: "ADD_FAV",
+      payload: episode
+    };
+    if (episodeInFav) {
+      const favWithoutEpisode = state.favorites.filter(
+        (fav: IEpisode) => fav.id !== episode.id
+      );
+      dispatchObj = {
+        type: "REMOVE_FAV",
+        payload: favWithoutEpisode
+      };
+    }
+
+    return dispatch(dispatchObj);
+  };
+
+  const props = {
+    episodes: state.episodes,
+    toggleFavAction,
+    favorites: state.favorites
+  }
   console.log(state);
   return (
     <React.Fragment>
       <header className="header">
-        <h1>Fire and Ice</h1>
-        <p>Pick your favorite Episode!!</p>
+        <div>
+          <h1>Fire and Ice</h1>
+          <p>Pick your favorite Episode!!</p>
+        </div>
+        <div>favorite(s):{state.favorites.length}</div>
       </header>
-      <section className="episode-layout">
-        {state.episodes.map((episode: IEpisode) => {
-          return (
-            <section key={episode.id} className="episode-box">
-              <img
-                src={episode.image.medium}
-                alt={`Fire and Ice ${episode.name}`}
-              />
-              <div>{episode.name}</div>
-              <section>
-                <div>
-                  Season: {episode.season} Number: {episode.number}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    toggleFavAction();
-                  }}
-                >
-                  Favorite
-                </button>
-              </section>
-            </section>
-          );
-        })}
-      </section>
+      <React.Suspense fallback={<div>...loading</div>} >
+        <section className="episode-layout">
+          <EpisodeList {...props}/>>
+        </section>
+      </React.Suspense>
     </React.Fragment>
   );
 }
