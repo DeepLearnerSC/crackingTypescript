@@ -1,12 +1,11 @@
 import React from "react";
-import { Store } from "./store";
-
 import { Link } from "@reach/router";
+
+import { Store } from "./store";
 
 export default function App(props: any): JSX.Element {
   const { state } = React.useContext(Store);
 
-  console.log(state,"App render");
   return (
     <React.Fragment>
       <header className="header">
@@ -19,7 +18,7 @@ export default function App(props: any): JSX.Element {
           <Link to="/fav">favorite(s):{state.favorites.length}</Link>
         </div>
       </header>
-    {props.children}
+      {props.children}
     </React.Fragment>
   );
 }
