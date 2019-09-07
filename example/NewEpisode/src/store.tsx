@@ -1,11 +1,10 @@
 import React from "react";
 import { IState, IAction } from "./interfaces";
 
-const initalState:IState = {
-  episodes:[],
-  favorites:[]
-}
-
+const initalState: IState = {
+  episodes: [],
+  favorites: []
+};
 
 export const Store = React.createContext<IState | any>(initalState);
 
@@ -22,11 +21,9 @@ function reducer(state: IState, action: IAction): IState {
   }
 }
 
-export function StoreProvider(props: any): JSX.Element {
+export function StoreProvider({ children }: JSX.ElementChildrenAttribute): JSX.Element {
   const [state, dispatch] = React.useReducer(reducer, initalState);
   return (
-    <Store.Provider value={{ state, dispatch }}>
-      {props.children}
-    </Store.Provider>
+    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
   );
 }

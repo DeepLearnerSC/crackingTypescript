@@ -6,7 +6,7 @@ import { Link } from "@reach/router";
 export default function App(props: any): JSX.Element {
   const { state } = React.useContext(Store);
 
-  console.log(state);
+  console.log(state,"App render");
   return (
     <React.Fragment>
       <header className="header">
@@ -16,7 +16,7 @@ export default function App(props: any): JSX.Element {
         </div>
         <div>
           <Link to="/">Home</Link>
-          <Link to="/faves">favorite(s):{state.favorites.length}</Link>
+          <Link to="/fav">favorite(s):{state.favorites.length}</Link>
         </div>
       </header>
     {props.children}

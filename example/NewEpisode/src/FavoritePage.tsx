@@ -8,12 +8,14 @@ const EpisodeList = React.lazy<any>(() => import("./EpisodeList"));
 export default function FavoritePage(): JSX.Element {
     const { state, dispatch } = React.useContext(Store);
 
+    console.log(state,"fav")
     const props:IEpisodeProps ={
         episodes: state.favorites,
         store: {state, dispatch},
         toggleFavAction,
         favorites: state.favorites
     }
+
     return (
         <React.Suspense fallback={<div>...loading</div>}>
             <div className="episode-layout">
