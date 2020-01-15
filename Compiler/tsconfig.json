@@ -6,6 +6,8 @@
     "sourceMap": false
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    // "analytics.ts" => you can exlude some ts file like this.
+    // "**/*.dev.ts"
   ]
 }
