@@ -1,5 +1,5 @@
-let myName: string = "Max";
-let myAge: number = 27;
+let myName: string = "Song";
+let myAge: number = 17;
 let anything;
 anything = 12;
 
