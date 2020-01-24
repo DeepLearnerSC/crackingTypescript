@@ -11,17 +11,17 @@ console.log(maxLevels);
 
 // Block scope
 function reset() {
-    // console.log(variable);
-    let variable = null;
-    console.log(variable);
+  // console.log(variable);
+  let variable = null;
+  console.log(variable);
 }
 reset();
 console.log(variable);
 
 // Arrow Functions
 console.log("ARROW FUNCTIONS");
-const addNumbers = function (number1: number, number2: number): number {
-    return number1 + number2;
+const addNumbers = function(number1: number, number2: number): number {
+  return number1 + number2;
 };
 console.log(addNumbers(10, 3));
 
@@ -29,7 +29,7 @@ const multiplyNumbers = (number1: number, number2: number) => number1 * number2;
 console.log(multiplyNumbers(10, 3));
 
 const greet = () => {
-    console.log("Hello!");
+  console.log("Hello!");
 };
 greet();
 
@@ -39,22 +39,42 @@ greetFriend("Manu");
 // Default Parameters
 console.log("DEFAULT PARAMETERS");
 const countdown = (start: number = 10): void => {
-    console.log(start);
-    while (start > 0) {
-        start--;
-    }
-    console.log("Done!", start);
+  console.log(start);
+  while (start > 0) {
+    start--;
+  }
+  console.log("Done!", start);
 };
 countdown();
 
 // Rest & Spread
+// SPREAD OPERATER (...)
 console.log("REST & SPREAD");
 const numbers = [1, 10, 99, -5];
 console.log(Math.max(33, 99, 10, -3));
 console.log(Math.max(...numbers));
 
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Hiking"];
+activeHobbies.push(...hobbies);
+
+const person = {
+  firstName: "Max",
+  age: 30
+};
+const copiedPerson = { ...person };
+
+// ... is rest parameter
+const add = (...numbers: number[]) => {
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+const addedNumbers = add(5, 10, 2, 3.7);
+console.log(addedNumbers);
+
 function makeArray(name: string, ...args: number[]) {
-    return args;
+  return args;
 }
 console.log(makeArray("Max", 1, 2, 6));
 
@@ -64,8 +84,8 @@ const myHobbies = ["Cooking", "Sports"];
 const [hobby1, hobby2] = myHobbies;
 console.log(hobby1, hobby2);
 
-const userData = {userName: "Max", age: 27};
-const {userName: myName, age: myAge} = userData;
+const userData = { userName: "Max", age: 27 };
+const { userName: myName, age: myAge } = userData;
 console.log(myName, myAge);
 
 // Template Literals
@@ -74,4 +94,3 @@ const greeting = `This is a heading!
 I'm ${userName}.
 This is cool!`;
 console.log(greeting);
-
