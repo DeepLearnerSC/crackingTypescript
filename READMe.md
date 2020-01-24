@@ -10,7 +10,7 @@ How to study Typescript!
 content
 1. Typescript Basics and Types
 2. Complier & Configuration 
-3. Next-generation Javascript and Typescript (skip it)
+3. Next-generation Javascript and Typescript (ES6)
 4. Classes Objects
 5. Interfaces
 6. Advanced Types & TypeScript Features
