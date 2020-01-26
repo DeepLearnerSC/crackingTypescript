@@ -5,3 +5,7 @@ Run "npm install" to install the required dependencies
 Run "tsc" to compile the TypeScript code
 
 Run "npm start" to run the development server (lite-server)
+
+
+Interfaces can't be instantiated and are not complied classes can be instantiated and are compiled.
+Interfaces describe objects (or function type) but can't store/describe arbitrary types like union types.
