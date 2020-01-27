@@ -2,7 +2,7 @@ console.log("Chapter 1: TypeScript Basics ");
 
 /////////////////////////////////////////////////////////////////////////////
 // Type 1: number, boolean, string
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
+function add(n1: number, n2: number, showResult: boolean, phrase: string): number | void {
   const result = n1 + n2;
   if (showResult) {
     console.log(phrase + result);
@@ -64,6 +64,7 @@ let nested: { data: number[]; output: (all: boolean) => number[] } = {
   data: [100, 3.99, 10],
 
   output: function(all: boolean): number[] {
+  console.log(all)
     return this.data;
   }
 };
