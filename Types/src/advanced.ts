@@ -23,24 +23,27 @@ type Numeric = number | boolean;
 
 type Universal = Combinable2 & Numeric;
 
+// Function Overloads
 function add2(a: number, b: number): number;
 function add2(a: string, b: string): string;
 function add2(a: string, b: number): string;
 function add2(a: number, b: string): string;
-function add2(a: Combinable, b: Combinable) {
+function add2(a: Combinable2, b: Combinable2) {
   if (typeof a === "string" || typeof b === "string") {
     return a.toString() + b.toString();
   }
   return a + b;
 }
 
-const result = add2("Max", " Schwarz");
+const result = add2("Ben", " Solo");
 result.split(" ");
 
+
+///////////////////Optional Chaining/////////////////////////////////////
 const fetchedUserData = {
-  id: "u1",
-  name: "Max",
-  job: { title: "CEO", description: "My own company" }
+  id: "s1",
+  name: "R2-D2",
+  job: { title: "3PO2", description: "Love Darth....c" }
 };
 
 //   console.log(fetchedUserData?.job?.title);
@@ -50,7 +53,7 @@ const fetchedUserData = {
 //   const storedData = userInput2 ?? 'DEFAULT';
 
 //   console.log(storedData);
-
+//////////////////////////////////////////////////////////////////
 
 ///////////////////type guard/////////////////////////////////////
 type UnknownEmployee = Employee | Admin;
@@ -125,19 +128,29 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({type: 'bird', flyingSpeed: 10});
+////////////////////////////////////////////////////////////
 
-// // const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
-// const userInputElement = document.getElementById('user-input');
+////////////////////////Type Casting////////////////////////
+const userInputElement = <HTMLInputElement>document.getElementById('user-input');
+userInputElement.value = 'Method 1'
 
-// if (userInputElement) {
-//   (userInputElement as HTMLInputElement).value = 'Hi there!';
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+const userInputElement2 = document.getElementById('user-input2') as HTMLInputElement;
+userInputElement2.value = 'Method 2'
+
+// const userInputElement3 = document.getElementById('user-input3')
+// if (userInputElement3 {
+//   (userInputElement3 as HTMLInputElement).value = 'Hi there!';
 // }
+////////////////////////////////////////////////////////////
 
-// interface ErrorContainer { // { email: 'Not a valid email', username: 'Must start with a character!' }
-//   [prop: string]: string;
-// }
+////////////////////////Index Properties////////////////////////
+interface ErrorContainer { // { email: 'Not a valid email', username: 'Must start with a character!' }
+  [prop: string]: string;
+}
 
-// const errorBag: ErrorContainer = {
-//   email: 'Not a valid email!',
-//   username: 'Must start with a capital character!'
-// };
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email!',
+  username: 'Must start with a capital character!'
+};
+////////////////////////////////////////////////////////////

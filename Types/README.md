@@ -74,3 +74,6 @@ app.ts에 있는 코드를 참조 바람.
 
 Why are "Types" useful and offer an advantage compare to vanilla JavaScript?
 Types allow you to detect if data of a wrong type is used or pass around, hence you can avoid unexpected runtime errors.
+
+"type guard" helps you avoid runtime errors by checking types before you try to do something with the values.
+"type casting" is helpful when you want to inform TS that a certain value is of specific type.
