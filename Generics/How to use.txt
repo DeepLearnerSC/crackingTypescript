@@ -5,3 +5,6 @@ Run "npm install" to install the required dependencies
 Run "tsc" to compile the TypeScript code
 
 Run "npm start" to run the development server (lite-server)
+
+Generics help you create data structures that work together or wrap values of a broad variety of types.
+Constraints allow you to narrow down the concrete types that may be used in generic function etc.
