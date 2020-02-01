@@ -130,7 +130,7 @@ const p = new Printer();
 const button = document.querySelector('button')!;
 button.addEventListener('click', p.showMessage);
 
-// ---
+// ---------------------------------------------------------------------------
 
 interface ValidatorConfig {
   [property: string]: {
@@ -141,26 +141,32 @@ interface ValidatorConfig {
 const registeredValidators: ValidatorConfig = {};
 
 function Required(target: any, propName: string) {
+  console.log('Required', target, propName) // propName = title
   registeredValidators[target.constructor.name] = {
     ...registeredValidators[target.constructor.name],
-    [propName]: ['required']
+    // [propName]: ['required']
+    [propName]: [...registeredValidators[target.constructor.name][propName], 'required']
   };
 }
 
 function PositiveNumber(target: any, propName: string) {
+  console.log('positive', target, propName) // propName = price
   registeredValidators[target.constructor.name] = {
     ...registeredValidators[target.constructor.name],
-    [propName]: ['positive']
+    // [propName]: ['positive']
+    [propName]: [...registeredValidators[target.constructor.name][propName], 'positive']
   };
 }
 
 function validate(obj: any) {
+  console.log('registerValidators: ',registeredValidators,registeredValidators[obj.constructor.name])
   const objValidatorConfig = registeredValidators[obj.constructor.name];
   if (!objValidatorConfig) {
     return true;
   }
   let isValid = true;
   for (const prop in objValidatorConfig) {
+    console.log(prop)
     for (const validator of objValidatorConfig[prop]) {
       switch (validator) {
         case 'required':
